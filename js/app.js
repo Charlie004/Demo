@@ -1,4 +1,7 @@
 App = Ember.Application.create();
+console.log("Run!");
+
+//var posts = parseJSON(JSONData); //See bottom
 
 App.Router.map(function() {
   this.resource('about');
@@ -35,6 +38,35 @@ Ember.Handlebars.helper('format-date', function(date) {
   return moment(date).fromNow();
 });
 
+
+
+
+var JSONData = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"}}';
+
+var parseJSON = function (data){
+ var temp = [];
+ var JSONValue = $.parseJSON(data);
+ //console.log("data: "+JSON.stringify(JSONValue, null, 4));
+ for (var postKey in JSONValue){
+ // console.log("postKey: "+postKey);
+  //console.log("data: "+JSON.stringify(JSONValue.postKey, null, 4));
+
+  var slot = parseInt(postKey);
+
+  temp[slot] = new Object();
+  temp[slot].id = slot;
+  temp[slot].title = JSONValue[postKey].title;
+  temp[slot].author = JSONValue[postKey].author; 
+  temp[slot].date = new Date(JSONValue[postKey].date); 
+  temp[slot].excerpt = JSONValue[postKey].excerpt; 
+  temp[slot].body = JSONValue[postKey].body;   
+ }
+ return temp;
+}
+
+var posts = parseJSON(JSONData);
+
+/*
 var posts = [{
   id: '1',
   title: "Human Nature I",
@@ -78,3 +110,4 @@ var posts = [{
   excerpt: "The Human Mind:",
   body: "And this I believe: that the free, exploring mind of the individual human is the most valuable thing in the world. And this I would fight for: the freedom of the mind to take any direction it wishes, undirected. And this I must fight against: any idea, religion, or government which limits or destroys the individual. This is what I am and what I am about."
 }];
+*/
