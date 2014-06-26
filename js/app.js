@@ -39,13 +39,14 @@ Ember.Handlebars.helper('format-date', function(date) {
 });
 
 
+var JSONString = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"}}';
 
+var parseJSON = function (){
 
-var JSONData = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"}}';
-
-var parseJSON = function (data){
  var temp = [];
- var JSONValue = $.parseJSON(data);
+ //var JSONValue = $.getJSON("./JSON.html"); //From Web
+ var JSONValue = $.parseJSON(JSONString);
+ 
  //console.log("data: "+JSON.stringify(JSONValue, null, 4));
  for (var postKey in JSONValue){
  // console.log("postKey: "+postKey);
@@ -64,7 +65,7 @@ var parseJSON = function (data){
  return temp;
 }
 
-var posts = parseJSON(JSONData);
+var posts = parseJSON();
 
 /*
 var posts = [{
