@@ -17,6 +17,8 @@ App.PostsRoute = Ember.Route.extend({
 
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
+	console.log("Post: ");
+	console.log(posts.findBy('id', params.post_id));
     return posts.findBy('id', params.post_id);
   }
 });
@@ -39,7 +41,7 @@ Ember.Handlebars.helper('format-date', function(date) {
 });
 
 
-var JSONString = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"}}';
+var JSONString = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"date":"06-13-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh and Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"date":"06-14-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","author":{"name":"Charlie"},"date":"06-15-2014","excerpt":"A Yummy stuff","body":"A chicken."}}';
 
 var parseJSON = function (){
 
@@ -49,19 +51,18 @@ var parseJSON = function (){
  
  //console.log("data: "+JSON.stringify(JSONValue, null, 4));
  for (var postKey in JSONValue){
- // console.log("postKey: "+postKey);
-  //console.log("data: "+JSON.stringify(JSONValue.postKey, null, 4));
-
-  var slot = parseInt(postKey);
+  var slot = temp.length;
 
   temp[slot] = new Object();
-  temp[slot].id = slot;
+  temp[slot].id = parseInt(postKey);
   temp[slot].title = JSONValue[postKey].title;
   temp[slot].author = JSONValue[postKey].author; 
   temp[slot].date = new Date(JSONValue[postKey].date); 
   temp[slot].excerpt = JSONValue[postKey].excerpt; 
   temp[slot].body = JSONValue[postKey].body;   
  }
+ console.log("temp: ");
+ console.log(temp);
  return temp;
 }
 
