@@ -59,8 +59,8 @@ App.Menu2Controller = Ember.ObjectController.extend({
   }
 });
 
-Ember.Handlebars.helper('format-date', function(date) {
-  return bigDate.toLocaleDateString();
+Ember.Handlebars.helper('format-date', function(temp) {
+  return temp.toLocaleDateString();
 });
 
 
