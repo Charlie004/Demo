@@ -23,7 +23,18 @@
 
   <script type="text/x-handlebars" id="date">
     <div>
-      <p>Hello World</p>
+          <ul class='list' type=none align="middle">
+            <h4>
+              <tr><th>{{format-date date}}</th></tr>
+            </h4>
+            {{#each model}}
+            <li>
+              {{#link-to 'post' this}}
+                {{title}}
+              {{/link-to}} 
+            </li>
+            {{/each}}
+          </ul>
     </div>
   </script>
 
