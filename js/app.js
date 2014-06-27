@@ -54,23 +54,21 @@ var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"
 
 //This one has dates attached to each food items instead of all of them
 
-//var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","author":{"name":"Charlie"},"date":"06-15-2014","excerpt":"A Yummy stuff","body":"A chicken."}}'; 
+//var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A Yummy stuff","body":"A chicken."},"date":"06-15-2014"}'; 
 
 var parseJSON = function (){
 
  var temp = [];
  //var JSONValue = $.getJSON("./JSON.html"); //From Web
  var JSONValue = $.parseJSON(JSONString);
- var indvDate = JSONValue["date"] === 'undefined';
- 
- if( ! indvDate ){ //If one big date
-	bigDate = new Date(JSONValue["date"]);
-	//bigDate = new Date();
- } else {
-    bigDate = new Date();
- }
+ var indvDate = typeof JSONValue["date"] === 'undefined';
  
  //console.log("data: "+JSON.stringify(JSONValue, null, 4));
+  if(! indvDate){ //if we a big date for them all
+    bigDate = new Date(JSONValue['date']);
+  } else {
+    bigDate = new Date();
+  }
  
  for (var postKey in JSONValue){
   var slot = temp.length;
@@ -85,6 +83,9 @@ var parseJSON = function (){
   temp[slot].excerpt = JSONValue[postKey].excerpt; 
   temp[slot].body = JSONValue[postKey].body;   
  }
+
+ 
+ 
  console.log("temp: ");
  console.log(temp);
  return temp;
