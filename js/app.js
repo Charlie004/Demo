@@ -5,7 +5,7 @@ var bigDate;
 
 
 App.Router.map(function() {
-  this.resource('about', function(){
+  this.resource('menu2', function(){
     this.resource('date')
   });
   this.resource('menu1');
