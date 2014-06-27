@@ -26,9 +26,11 @@ App.Menu1Route = Ember.Route.extend({
 
 App.ItemRoute = Ember.Route.extend({
   model: function(params) {
-	console.log("item: ");
-	console.log(items.findBy('id', params.item_id));
-    return items.findBy('id', params.item_id);
+	for(var i = 0; i < items.length; i++){
+	    if (items[i].id == params.item_id){
+		    return items[i];
+		}
+	}
   }
 });
 
