@@ -45,8 +45,8 @@ App.itemController = Ember.ObjectController.extend({
   }
 });
 
-Ember.Handlebars.helper('format-date', function(date) {
-  return moment(date).toLocaleDateString();
+Ember.Handlebars.helper('format-date', function(unneeded) {
+  return moment(items[0].date).toLocaleDateString();
 });
 
 
