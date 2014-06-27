@@ -21,16 +21,24 @@
     {{outlet}}
   </script>
 
-  
+  <script type="text/x-handlebars" id="date">
+    <div>
+      <p>Hello World</p>
+    </div>
+  </script>
+
   <script type="text/x-handlebars" id="about">
     <div class='about'>
       <div class="navbar">
         <div class="navbar-inner">
           <ul class="nav">
-            <li>{{#link-to 'posts'}}Date{{/link-to}}</li>
+            <li>{{#link-to 'posts'}}Previous{{/link-to}}</li>
+            <li>{{#link-to 'date'}}Date{{/link-to}}</li>
+            <li>{{#link-to 'posts'}}Next{{/link-to}}</li>
           </ul>
         </div>
       </div>
+      {{outlet}}
     </div>
   </script>
 

@@ -4,9 +4,17 @@ console.log("Run!");
 //var posts = parseJSON(JSONData); //See bottom
 
 App.Router.map(function() {
-  this.resource('about');
+  this.resource('about', function(){
+    this.resource('date')
+  });
   this.resource('posts');
   this.resource('post', { path: ':post_id' });
+});
+
+App.DateRoute = Ember.Route.extend({
+  model: function() {
+    return posts;
+  }
 });
 
 App.PostsRoute = Ember.Route.extend({
