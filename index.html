@@ -13,7 +13,7 @@
       <div class="navbar-inner">
         <a class="brand" href="#">Ya Hungry?</a>
         <ul class="nav">
-          <li>{{#link-to 'posts'}}Type 1{{/link-to}}</li>
+          <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
           <li>{{#link-to 'about'}}Type 2{{/link-to}}</li>
         </ul>
       </div>
@@ -32,9 +32,9 @@
       <div class="navbar">
         <div class="navbar-inner">
           <ul class="nav">
-            <li>{{#link-to 'posts'}}Previous{{/link-to}}</li>
+            <li>{{#link-to 'menu1'}}Previous{{/link-to}}</li>
             <li>{{#link-to 'date'}}Date{{/link-to}}</li>
-            <li>{{#link-to 'posts'}}Next{{/link-to}}</li>
+            <li>{{#link-to 'menu1'}}Next{{/link-to}}</li>
           </ul>
         </div>
       </div>
@@ -42,7 +42,7 @@
     </div>
   </script>
 
-  <script type="text/x-handlebars" id="posts">
+  <script type="text/x-handlebars" id="menu1">
     <div class=container-fluid">
       <div class="row-fluid">
           <ul class='list' type=none align="middle">
@@ -51,7 +51,7 @@
             </h4>
             {{#each model}}
             <li>
-              {{#link-to 'post' this}}
+              {{#link-to 'item' this}}
                 {{title}}
               {{/link-to}} 
             </li>
@@ -64,17 +64,17 @@
     </div>
   </script>
 
-  <script type="text/x-handlebars" id="post">
+  <script type="text/x-handlebars" id="item">
     {{#if isEditing}}
-      {{partial 'post/edit'}}
+      {{partial 'item/edit'}}
       <button {{action 'doneEditing'}}>Done</button>
     {{else}}
       <button {{action 'edit'}}>Edit</button>
-	  <button {{#link-to 'posts'}}{{/link-to}} Back</button>
+	  <button {{#link-to 'menu1'}}{{/link-to}} Back</button>
     {{/if}}
 
 
-    <h1>{{title}} <small class='muted'>served at {{author.name}} -- Posted ({{format-date date}})</small></h1>
+    <h1>{{title}} <small class='muted'>served at {{restaurant.name}}</small></h1>
     <h2> </h2>
 
     <hr>
@@ -88,7 +88,7 @@
     </div>
   </script>
 
-  <script type="text/x-handlebars" id="post/edit">
+  <script type="text/x-handlebars" id="item/edit">
     <p>{{input type="text" value=title}}</p>
     <p>{{input type="text" value=excerpt}}</p>
     <p>{{textarea value=body}}</p>
