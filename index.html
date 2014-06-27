@@ -25,11 +25,11 @@
     <div>
           <ul class='list' type=none align="middle">
             <h4>
-              <tr><th>{{format-date date}}</th></tr>
+              {{format-date date}}
             </h4>
             {{#each model}}
             <li>
-              {{#link-to 'post' this}}
+              {{#link-to 'item' this}}
                 {{title}}
               {{/link-to}} 
             </li>
