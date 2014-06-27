@@ -43,9 +43,9 @@
       <div class="navbar">
         <div class="navbar-inner">
           <ul class="nav">
-            <button {{action 'prev'}}>Previous</button>
+            <li>{{#link-to 'application'}}Previous{{/link-to}}</li>
             <li>{{#link-to 'date'}}{{format-date date}}{{/link-to}}</li>
-            <button {{action 'next'}}>Next</button>
+            <li>{{#link-to 'application'}}Next{{/link-to}}</li>
           </ul>
         </div>
       </div>
