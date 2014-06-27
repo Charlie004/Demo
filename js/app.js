@@ -48,6 +48,17 @@ App.itemController = Ember.ObjectController.extend({
   }
 });
 
+App.Menu2Controller = Ember.ObjectController.extend({
+
+  next: function() {
+      bigDate.setDate(bigDate.getDate() + 1);
+  },
+
+  prev: function() {
+      bigDate.setDate(bigDate.getDate() - 1);
+  }
+});
+
 Ember.Handlebars.helper('format-date', function(date) {
   return bigDate.toLocaleDateString();
 });
@@ -67,10 +78,11 @@ var parseJSON = function (){
  var indvDate = typeof JSONValue["date"] === 'undefined';
  
  //console.log("data: "+JSON.stringify(JSONValue, null, 4));
-  if(! indvDate){ //if we a big date for them all
-    bigDate = new Date(JSONValue['date']);
-  } else {
+ 
+  if(typeof bigDaate === 'undefined'){ //No current date.. set it to today
     bigDate = new Date();
+  } else {
+    //Do nothing.
   }
  
  for (var postKey in JSONValue){
