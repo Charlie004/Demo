@@ -2,6 +2,8 @@ App = Ember.Application.create();
 console.log("Run!");
 //var posts = parseJSON(JSONData); //See bottom
 
+
+
 App.Router.map(function() {
   this.resource('about', function(){
     this.resource('date')
@@ -24,7 +26,7 @@ App.Menu1Route = Ember.Route.extend({
 
 App.ItemRoute = Ember.Route.extend({
   model: function(params) {
-	console.log("Post: ");
+	console.log("item: ");
 	console.log(items.findBy('id', params.item_id));
     return items.findBy('id', params.item_id);
   }
@@ -48,7 +50,7 @@ Ember.Handlebars.helper('format-date', function(date) {
 });
 
 
-var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Zach"},"date":"06-12-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-13-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh and Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-14-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A Yummy stuff","body":"A chicken."}}';
+var JSONString = '{"1":{"title":"Hamburger","author":{"name":"Zach"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","author":{"name":"Zach"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","author":{"name":"Zach"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","author":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"date":"06-15-2014"}';
 
 var parseJSON = function (){
 
@@ -59,12 +61,14 @@ var parseJSON = function (){
  //console.log("data: "+JSON.stringify(JSONValue, null, 4));
  for (var postKey in JSONValue){
   var slot = temp.length;
-
+  if(postKey === "date"){
+   continue;
+  }
   temp[slot] = new Object();
   temp[slot].id = parseInt(postKey);
   temp[slot].title = JSONValue[postKey].title;
   temp[slot].restaurant = JSONValue[postKey].restaurant; 
-  temp[slot].date = new Date(JSONValue[postKey].date); 
+  temp[slot].date = new Date(JSONValue["date"]); 
   temp[slot].excerpt = JSONValue[postKey].excerpt; 
   temp[slot].body = JSONValue[postKey].body;   
  }

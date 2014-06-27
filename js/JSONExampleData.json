@@ -2,7 +2,6 @@
 	"1": {
 			"title" : "Hamburger",
 			"author" : { "name" : "Zach" },
-			"date" : "06-12-2014",
 			"excerpt" : "A tasty burger",
 			"body" :  "A delicious burger made of well... burger. 100 Cal. $17.99"
 		 },
@@ -10,7 +9,6 @@
     "2": {
 			"title" : "Cheeseburger",
 			"author" : { "name" : "Zach" },
-			"date" : "06-13-2014",
 			"excerpt" : "A tasty cheese burger",
 			"body" :  "A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"
 		 },
@@ -18,7 +16,6 @@
 	"3": {
 			"title" : "Veggiburger",
 			"author" : { "name" : "Zach" },
-			"date" : "06-14-2014",
 			"excerpt" : "A tasty veggiburger",
 			"body" :  "A delicious burger made of well... plants. 100 Cal. $17.99"
 		 },
@@ -26,10 +23,12 @@
 	"4": {
 			"title" : "Chicken Fingers",
 			"author" : { "name" : "Charlie" },
-			"date" : "06-15-2014",
 			"excerpt" : "A Yummy stuff",
 			"body" :  "A chicken."
-		 }
+		 },
+		 
+		 
+    "date": "06-13-2014"
 
 
 
