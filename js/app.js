@@ -31,6 +31,7 @@ App.Router.map(function() {
 App.DateRoute = Ember.Route.extend({
   model: function() {
     onMenu2 = true;
+    items = parseJSON();
     return items;
   }
 });
@@ -97,10 +98,11 @@ Ember.Handlebars.helper('setOnMenu1', function() {
 });
 
 Ember.Handlebars.helper('setOnMenu2', function() {
-  console.log("Menu 2");
+  console.log("Called Menu 2");
   onMenu2 = true;
   bigDate = new Date();
   items = parseJSON();
+  console.log(items);
   updateMenu();
 });
 
@@ -110,6 +112,9 @@ Ember.Handlebars.helper('isOnMenu2', function(block) {
   return onMenu2;
 });
 
+Ember.Handlebars.helper('updateMenu', function(block) {
+  updateMenu();
+});
 
 Ember.Handlebars.helper('get-date', getDate); //This needs to be a function! JK
 
@@ -118,12 +123,12 @@ var getDate = function getDate(){
   return bigDate.toLocaleDateString();
 }
 
-var JSONString1 = '{"1":{"title":"Hamburger(json1)?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}';
+var JSONString1 = '{"2":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"1":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"5":{"title":"Veggieburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggieburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken\'s finger."},"3":{"title":"Salad","restaurant":{"name":"Charlie"},"excerpt":"A not so Yummy stuff","body":"Some leaves and cheese. Why on earth would you eat this?"},"6":{"title":"Pizza","restaurant":{"name":"Charlie"},"excerpt":"Hot and round","body":"With cheese or whatever crap you want on it."}}';
 
 
-var JSONString2 = ['{"date":"06-29-2014","1":{"title":"Hamburger-1?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}',
-                  '{"date":"06-30-2014","1":{"title":"Hamburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}',
-                  '{"date":"07-01-2014","1":{"title":"Hamburger1?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}',
+var JSONString2 = ['{"date":"06-29-2014","1":{"title":"Hamburger1","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger1","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggieburger1","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggieburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers1","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken\'s finger."},"5":{"title":"Salad1","restaurant":{"name":"Charlie"},"excerpt":"A not so Yummy stuff","body":"Some leaves and cheese. Why on earth would you eat this?"},"6":{"title":"Pizza1","restaurant":{"name":"Charlie"},"excerpt":"Hot and round","body":"With cheese or whatever crap you want on it."}}',
+                  '{"date":"06-30-2014","1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggieburger","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggieburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken\'s finger."},"5":{"title":"Salad","restaurant":{"name":"Charlie"},"excerpt":"A not so Yummy stuff","body":"Some leaves and cheese. Why on earth would you eat this?"},"6":{"title":"Pizza","restaurant":{"name":"Charlie"},"excerpt":"Hot and round","body":"With cheese or whatever crap you want on it."}}',
+                  '{"date":"07-01-2014","1":{"title":"Hamburger2","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger2","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggieburger2","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggieburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers2","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken\'s finger."},"5":{"title":"Salad2","restaurant":{"name":"Charlie"},"excerpt":"A not so Yummy stuff","body":"Some leaves and cheese. Why on earth would you eat this?"},"6":{"title":"Pizza2","restaurant":{"name":"Charlie"},"excerpt":"Hot and round","body":"With cheese or whatever crap you want on it."}}',
                   '{"1":{"title":"No items for this date.","restaurant":{"name":"N/A"},"excerpt":"Error","body":"Doesnt work because we are too lazy to enter in more test data."}}'];
 
 var parseJSON = function (){

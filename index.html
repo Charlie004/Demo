@@ -9,18 +9,14 @@
 <body>
 
   <script type="text/x-handlebars">
-     <div class="navbar navbar-default">
-         <div class="nav navbar-nav">
-           <a class="brand" href="#">Ya Hungry?</a>
-             <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
-             <li>{{#link-to 'date'}}Menu 2{{/link-to}}</li>
-        
+    <div class="navbar navbar-default">
+      <div class="nav navbar-nav">
+        <a class="brand" href="#">Ya Hungry?</a>
+        <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
+        <li>{{#link-to 'date'}}Menu 2{{/link-to}}</li>
       </div>
     </div>
 </nav>
-
-	
-	
     {{outlet}}
   </script>
 
@@ -82,13 +78,6 @@
   </script>
 
   <script type="text/x-handlebars" id="item">
-
-    {{#if isEditing}}
-      {{partial 'item/edit'}}
-      <button {{action 'doneEditing'}} >Done</button>
-    {{else}}
-	  
-    {{/if}}
 
 	
 	{{#if isOnMenu2}}
