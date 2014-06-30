@@ -3956,13 +3956,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-nav {
-    float: none;
+    float: left;
     margin: 0;
-	text-align: center;
   }
   .navbar-nav > li {
-    float: none;
-	display: inline-block;
+    float: left;
   }
   .navbar-nav > li > a {
     padding-top: 15px;

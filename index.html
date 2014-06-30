@@ -9,15 +9,20 @@
 <body>
 
   <script type="text/x-handlebars">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="#">Ya Hungry?</a>
-        <ul class="nav">
-          <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
-          <li>{{#link-to 'menu2'}}Menu 2{{/link-to}}</li>
-        </ul>
+     <div class="navbar navbar-default">
+         <div class="nav navbar-nav">
+           <a class="brand" href="#">Ya Hungry?</a>
+             <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
+             <li>{{#link-to 'menu2'}}Menu 2{{/link-to}}</li>
+        
       </div>
     </div>
+    <!-- </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	
+	
     {{outlet}}
   </script>
 
@@ -42,7 +47,7 @@
     <div class='menu2'>
       <div class="navbar">
         <div class="navbar-inner">
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <li>{{#link-to 'application'}}Previous{{/link-to}}</li>
             <li>{{#link-to 'date'}}<p> {{get-date}} </p>{{/link-to}}</li>
             <li>{{#link-to 'application'}}Next{{/link-to}}</li>

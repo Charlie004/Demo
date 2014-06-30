@@ -4,6 +4,20 @@ console.log("Run!");
 var bigDate;
 
 
+var centerNavBar = function(){
+ var width = $(document).width();
+ var pad = width/2;
+ console.log(pad);
+  $('#div.navbar-inner').css({
+  'padding-left': pad + 'px'
+  }); //.navbar-inner
+  
+  
+  $('#navbar-inner').css({
+  'padding-left': pad + 'px'
+  }); //.navbar-inner
+}
+
 
 App.Router.map(function() {
   this.resource('menu2', function(){
@@ -66,6 +80,12 @@ Ember.Handlebars.helper('format-date', function(temp) {
 Ember.Handlebars.helper('get-date', function() {
   return bigDate.toLocaleDateString();
 });
+
+$(document).ready(function() {
+console.log("Ready!");
+    centerNavBar();
+});
+
 
 
 var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-16-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-17-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie"},"date":"06-18-2014","excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2","restaurant":{"name":"Charlie"},"date":"08-27-2014","excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3","restaurant":{"name":"Charlie"},"date":"06-27-2014","excerpt":"A Yummy stuff","body":"A chicken."}}';
