@@ -72,7 +72,7 @@ App.Menu2Controller = Ember.ObjectController.extend({
 	  $('#dateDisplay').html(getDate());
 
     $('#dateDisplay2').html(getDate());
-      items = parseJSON();
+      
 	  updateMenu();
 
   },
@@ -81,7 +81,6 @@ App.Menu2Controller = Ember.ObjectController.extend({
       bigDate.setDate(bigDate.getDate() - 1);
 	  $('#dateDisplay').html(getDate());
       $('#dateDisplay2').html(getDate());
-      items = parseJSON();
 	  updateMenu();
       console.log(items);
   }
@@ -99,6 +98,9 @@ Ember.Handlebars.helper('setOnMenu1', function() {
 Ember.Handlebars.helper('setOnMenu2', function() {
   console.log("Menu 2");
   onMenu2 = true;
+  bigDate = new Date();
+  items = parseJSON();
+  updateMenu();
 });
 
 
@@ -162,11 +164,10 @@ var parseJSONString = function(JSONString){
  return temp;
 }
 
-var count = 0;
 var updateMenu = function(){
+    items = parseJSON();
 	//This function uses jQuery to update the menu items
 	//It's ugly... but it works
-	count++;
 	var begin = '<ul class="list" type=none align="middle"> <h4> <p> '+getDate()+' </p> </h4>';
 	var end = '</ul>';
 	var middle = "";
