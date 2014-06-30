@@ -70,6 +70,8 @@ App.Menu2Controller = Ember.ObjectController.extend({
 	 // $('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
 	  $('#dateDisplay').html(getDate());
       console.log(getDate());
+      parseJSON();
+      console.log(items);
   },
 
   prev: function() {
@@ -78,6 +80,8 @@ App.Menu2Controller = Ember.ObjectController.extend({
 	  //$('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
 	  $('#dateDisplay').html(getDate());
       console.log(getDate());
+      parseJSON();
+      console.log(items);
   }
 });
 
@@ -93,24 +97,39 @@ var getDate = function getDate(){
 }
 
 
-var JSONString = '{"date":"06-29-2014","1":{"title":"Hamburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}';
+var JSONString = ['{"date":"06-29-2014","1":{"title":"Hamburger-1?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}',
+                  '{"date":"06-30-2014","1":{"title":"Hamburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}',
+                  '{"date":"07-01-2014","1":{"title":"Hamburger1?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger?!","restaurant":{"name":"Charlie\'s"},"excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3?!","restaurant":{"name":"Charlie"},"excerpt":"A Yummy stuff","body":"A chicken."}}'];
 
 
 
 var parseJSON = function (){
-
- var temp = [];
- //var JSONValue = $.getJSON("./JSON.html"); //From Web
- var JSONValue = $.parseJSON(JSONString);
- var indvDate = typeof JSONValue["date"] === 'undefined';
- 
- //console.log("data: "+JSON.stringify(JSONValue, null, 4));
- 
-  if(typeof bigDaate === 'undefined'){ //No current date.. set it to today
+    if(typeof bigDaate === 'undefined'){ //No current date.. set it to today
     bigDate = new Date();
   } else {
     //Do nothing.
   }
+
+
+ var temp = [];
+ var index = 0;
+ for(var i = 0; i < JSONString.length; i++){
+  var data = new Date(JSONString[i].substring(9,19));
+
+  if (data.toLocaleDateString() == getDate()){
+    index = i;
+    break;
+
+  }
+ }
+ 
+ //var JSONValue = $.getJSON("./JSON.html"); //From Web
+ var JSONValue = $.parseJSON(JSONString[index]);
+ var indvDate = typeof JSONValue["date"] === 'undefined';
+ 
+ //console.log("data: "+JSON.stringify(JSONValue, null, 4));
+ 
+
  
  for (var postKey in JSONValue){
   var slot = temp.length;
