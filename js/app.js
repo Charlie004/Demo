@@ -1,7 +1,7 @@
 App = Ember.Application.create();
 console.log("Run!");
 //var posts = parseJSON(JSONData); //See bottom
-var bigDate;
+var bigDate; //the date of the menu we are looking at
 
 
 var centerNavBar = function(){
@@ -66,10 +66,14 @@ App.Menu2Controller = Ember.ObjectController.extend({
 
   next: function() {
       bigDate.setDate(bigDate.getDate() + 1);
+      console.log("changed +");
+      console.log(getDate());
   },
 
   prev: function() {
       bigDate.setDate(bigDate.getDate() - 1);
+      console.log("changed -");
+      console.log(getDate());
   }
 });
 
@@ -77,22 +81,17 @@ Ember.Handlebars.helper('format-date', function(temp) {
   return temp.toLocaleDateString();
 });
 
-Ember.Handlebars.helper('get-date', function() {
+Ember.Handlebars.helper('get-date', getDate);
+
+
+var getDate = function getDate(){
   return bigDate.toLocaleDateString();
-});
-
-$(document).ready(function() {
-console.log("Ready!");
-    centerNavBar();
-});
-
+}
 
 
 var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-16-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-17-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie"},"date":"06-18-2014","excerpt":"A Yummy stuff","body":"A chicken."},"5":{"title":"Chicken Fingers2","restaurant":{"name":"Charlie"},"date":"08-27-2014","excerpt":"A Yummy stuff","body":"A chicken."},"6":{"title":"Chicken Fingers3","restaurant":{"name":"Charlie"},"date":"06-27-2014","excerpt":"A Yummy stuff","body":"A chicken."}}';
 
-//This one has dates attached to each food item instead of all of them
 
-//var JSONString = '{"1":{"title":"Hamburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty burger","body":"A delicious burger made of well... burger. 100 Cal. $17.99"},"2":{"title":"Cheeseburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty cheese burger","body":"A delicious burger made of well... burger.. oh an Cheese!. 100 Cal. $17.99"},"3":{"title":"Veggiburger","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A tasty veggiburger","body":"A delicious burger made of well... plants. 100 Cal. $17.99"},"4":{"title":"Chicken Fingers","restaurant":{"name":"Charlie\'s"},"date":"06-15-2014","excerpt":"A Yummy stuff","body":"A chicken."},"date":"06-15-2014"}'; 
 
 var parseJSON = function (){
 

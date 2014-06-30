@@ -30,7 +30,7 @@
     <div>
           <ul class='list' type=none align="middle">
             <h4>
-              <p> poop </p>
+              <p> Placeholder Word </p>
             </h4>
             {{#each model}}
             <li>
@@ -47,10 +47,11 @@
     <div class='menu2'>
       <div class="navbar">
         <div class="navbar-inner">
+
           <ul class="nav navbar-nav">
-            <li>{{#link-to 'application'}}Previous{{/link-to}}</li>
-            <li>{{#link-to 'date'}}<p> {{get-date}} </p>{{/link-to}}</li>
-            <li>{{#link-to 'application'}}Next{{/link-to}}</li>
+            <li><button {{action 'prev'}}>Previous</button></li>
+            <li>{{#link-to 'date'}} {{get-date}} {{/link-to}}</li>
+            <li><button {{action 'next'}}>Next</button></li>
           </ul>
         </div>
       </div>

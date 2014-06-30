@@ -4601,10 +4601,16 @@ a.list-group-item.active > .badge,
   margin-right: auto;
   margin-left: auto;
 }
+<<<<<<< HEAD
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #428bca;
+=======
+
+.navbar .nav > li {        
+  float: left;
+>>>>>>> origin/master
 }
 .thumbnail .caption {
   padding: 9px;
