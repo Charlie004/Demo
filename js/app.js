@@ -80,7 +80,7 @@ App.Menu2Controller = Ember.ObjectController.extend({
   prev: function() {
       bigDate.setDate(bigDate.getDate() - 1);
 	  $('#dateDisplay').html(getDate());
-    $('#dateDisplay2').html(getDate());
+      $('#dateDisplay2').html(getDate());
       items = parseJSON();
 	  updateMenu();
       console.log(items);
@@ -102,9 +102,8 @@ Ember.Handlebars.helper('setOnMenu2', function() {
 });
 
 
-Ember.Handlebars.helper('isOnMenu2', function(block) {
-  console.log("Menu: "+onMenu2);
-  return onMenu2;
+Ember.Handlebars.helper('setBackButton', function() {
+	$('#backButton').html('<a href="#/menu2/date"><button>Back</buttom></a>');
 });
 
 
@@ -172,7 +171,7 @@ var updateMenu = function(){
 	var end = '</ul>';
 	var middle = "";
 	for(var i = 0; i < items.length; i++){
-	// $('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
+	// 
 	   middle += '<li><a href="#/'+i+'">'+items[i].title+'</a></li>';
 	}
 
