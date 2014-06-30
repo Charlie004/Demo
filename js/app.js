@@ -67,12 +67,16 @@ App.Menu2Controller = Ember.ObjectController.extend({
   next: function() {
       bigDate.setDate(bigDate.getDate() + 1);
       console.log("changed +");
+	 // $('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
+	  $('#dateDisplay').html(getDate());
       console.log(getDate());
   },
 
   prev: function() {
       bigDate.setDate(bigDate.getDate() - 1);
       console.log("changed -");
+	  //$('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
+	  $('#dateDisplay').html(getDate());
       console.log(getDate());
   }
 });

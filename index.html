@@ -13,7 +13,7 @@
          <div class="nav navbar-nav">
            <a class="brand" href="#">Ya Hungry?</a>
              <li>{{#link-to 'menu1'}}Menu 1{{/link-to}}</li>
-             <li>{{#link-to 'menu2'}}Menu 2{{/link-to}}</li>
+             <li>{{#link-to 'date'}}Menu 2{{/link-to}}</li>
         
       </div>
     </div>
@@ -49,8 +49,8 @@
         <div class="navbar-inner">
 
           <ul class="nav navbar-nav">
-            <li><button {{action 'prev'}}>Previous</button></li>
-            <li>{{#link-to 'date'}} {{get-date}} {{/link-to}}</li>
+            <li ><button {{action 'prev'}}>Previous</button></li>
+            <li id="dateDisplay">{{get-date}}</li>
             <li><button {{action 'next'}}>Next</button></li>
           </ul>
         </div>
