@@ -45,16 +45,24 @@ App.Menu1Route = Ember.Route.extend({
 
 App.ItemRoute = Ember.Route.extend({
   model: function(params) {
+    var stuff = [];
+    if(onMenu2){
+		stuff = items;
+	} else {
+		stuff = items1;
+	}
 	for(var i = 0; i < items.length; i++){
-	    if (items[i].id == params.item_id){
-		    return items[i];
+	    if (stuff[i].id == params.item_id){
+		    return stuff[i];
 		}
 	}
   }
 });
 
 App.itemController = Ember.ObjectController.extend({
-  isEditing: false,
+  isEditing: true,
+  
+  isOnMenu2: false,
 
   edit: function() {
     this.set('isEditing', true);
@@ -71,18 +79,14 @@ App.Menu2Controller = Ember.ObjectController.extend({
   next: function() {
       bigDate.setDate(bigDate.getDate() + 1);
 	  $('#dateDisplay').html(getDate());
-
-    $('#dateDisplay2').html(getDate());
-      
+      $('#dateDisplay2').html(getDate());
 	  updateMenu();
-
   },
 
   prev: function() {
       bigDate.setDate(bigDate.getDate() - 1);
 	  $('#dateDisplay').html(getDate());
-    $('#dateDisplay2').html(getDate());
-    
+      $('#dateDisplay2').html(getDate());
 	  updateMenu();
       console.log(items);
   }
@@ -107,9 +111,9 @@ Ember.Handlebars.helper('setOnMenu2', function() {
 });
 
 
-Ember.Handlebars.helper('isOnMenu2', function(block) {
-  console.log("Menu: "+onMenu2);
-  return onMenu2;
+Ember.Handlebars.helper('setBackButton', function() {
+    console.log("Poke");
+	$('#backButton').html("<p>New</p>"); //<a href="#/menu2/date"><button>Back</buttom></a>
 });
 
 Ember.Handlebars.helper('updateMenu', function(block) {
@@ -179,8 +183,8 @@ var updateMenu = function(){
 	var end = '</ul>';
 	var middle = "";
 	for(var i = 0; i < items.length; i++){
-	// $('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
-	   middle += '<li><a href="#/'+i+'">'+items[i].title+'</a></li>';
+	// 
+	   middle += '<li><a href="#/'+(i+1)+'">'+items[i].title+'</a></li>';
 	}
 
     var all = begin + middle + end;
