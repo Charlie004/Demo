@@ -44,6 +44,7 @@
   </script>
 
   <script type="text/x-handlebars" id="menu2">
+  {{setOnMenu2}}
     <div class='menu2'>
       <div class="navbar">
         <div class="navbar-inner">
@@ -60,6 +61,7 @@
   </script>
 
   <script type="text/x-handlebars" id="menu1">
+    {{setOnMenu1}}
     <div class=container-fluid">
       <div class="row-fluid">
           <ul class='list' type=none align="middle">
@@ -86,9 +88,14 @@
       {{partial 'item/edit'}}
       <button {{action 'doneEditing'}}>Done</button>
     {{else}}
-      <button {{action 'edit'}}>Edit</button>
-	  <button {{#link-to 'menu1'}}{{/link-to}} Back</button>
+	  
     {{/if}}
+	
+	{{#if onMenu2}}
+		<button {{#link-to 'menu2'}}{{/link-to}} Back</button>
+	{{else}}
+		<button {{#link-to 'menu1'}}{{/link-to}} Back</button>
+	{{/if}}
 
 
     <h1>{{title}} <small class='muted'>served at {{restaurant.name}}</small></h1>

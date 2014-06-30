@@ -3,6 +3,7 @@ console.log("Run!");
 //var posts = parseJSON(JSONData); //See bottom
 var bigDate; //the date of the menu we are looking at
 
+var onMenu2 = false;
 
 var centerNavBar = function(){
  var width = $(document).width();
@@ -29,12 +30,14 @@ App.Router.map(function() {
 
 App.DateRoute = Ember.Route.extend({
   model: function() {
+    onMenu2 = true;
     return items;
   }
 });
 
 App.Menu1Route = Ember.Route.extend({
   model: function() {
+    onMenu2 = false;
     return items;
   }
 });
@@ -69,7 +72,8 @@ App.Menu2Controller = Ember.ObjectController.extend({
 	  $('#dateDisplay').html(getDate());
 
     $('#dateDisplay2').html(getDate());
-      parseJSON();
+      items = parseJSON();
+	  updateMenu();
 
   },
 
@@ -77,13 +81,22 @@ App.Menu2Controller = Ember.ObjectController.extend({
       bigDate.setDate(bigDate.getDate() - 1);
 	  $('#dateDisplay').html(getDate());
     $('#dateDisplay2').html(getDate());
-      parseJSON();
+      items = parseJSON();
+	  updateMenu();
       console.log(items);
   }
 });
 
 Ember.Handlebars.helper('format-date', function(temp) {
   return temp.toLocaleDateString();
+});
+
+Ember.Handlebars.helper('setOnMenu1', function() {
+  onMenu2 = false;
+});
+
+Ember.Handlebars.helper('setOnMenu2', function() {
+  onMenu2 = true;
 });
 
 Ember.Handlebars.helper('get-date', getDate); //This needs to be a function! JK
@@ -149,12 +162,12 @@ var updateMenu = function(){
 	//This function uses jQuery to update the menu items
 	//It's ugly... but it works
 	count++;
-	var begin = '<ul class="list" type=none align="middle"> <h4> <p> Placeholder Word'+count+' </p> </h4>';
+	var begin = '<ul class="list" type=none align="middle"> <h4> <p> '+getDate()+"  "+count+' </p> </h4>';
 	var end = '</ul>';
 	var middle = "";
 	for(var i = 0; i < items.length; i++){
 	// $('#dateDisplay').html('<a href="#/menu2/date">'+getDate()+'</a>');
-	   middle += '<li> <a href="#/'+i+'>'+items[i].title+'</a></li>';
+	   middle += '<li><a href="#/'+i+'">'+items[i].title+'</a></li>';
 	}
 
     var all = begin + middle + end;
