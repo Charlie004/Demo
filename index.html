@@ -29,10 +29,10 @@
   <script type="text/x-handlebars" id="date">
     <div>
           <ul class='list' type=none align="middle">
-            <h4>
-              <p> Placeholder Word </p>
+            <h4 id="dateDisplay2">
+              {{get-date}}
             </h4>
-            {{#each model}}
+              {{#each model}}
             <li>
               {{#link-to 'item' this}}
                 {{title}}

@@ -67,12 +67,14 @@ App.Menu2Controller = Ember.ObjectController.extend({
   next: function() {
       bigDate.setDate(bigDate.getDate() + 1);
 	  $('#dateDisplay').html(getDate());
+    $('#dateDisplay2').html(getDate());
       parseJSON();
   },
 
   prev: function() {
       bigDate.setDate(bigDate.getDate() - 1);
 	  $('#dateDisplay').html(getDate());
+    $('#dateDisplay2').html(getDate());
       parseJSON();
       console.log(items);
   }
