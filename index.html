@@ -84,23 +84,16 @@
   </script>
 
   <script type="text/x-handlebars" id="item">
-    {{#if isEditing}}
-      {{partial 'item/edit'}}
-      <button {{action 'doneEditing'}}>Done</button>
-    {{else}}
-	  
-    {{/if}}
 	
-	{{#if onMenu2}}
-		<button {{#link-to 'menu2'}}{{/link-to}} Back</button>
+	{{#if isOnMenu2}}
+		<button {{#link-to 'menu2'}}{{/link-to}} Back2</button>
 	{{else}}
-		<button {{#link-to 'menu1'}}{{/link-to}} Back</button>
+		<button {{#link-to 'menu1'}}{{/link-to}} Back1</button>
 	{{/if}}
+		
 
 
     <h1>{{title}} <small class='muted'>served at {{restaurant.name}}</small></h1>
-    <h2> </h2>
-
     <hr>
 
     <div class='intro'>

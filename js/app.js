@@ -92,12 +92,20 @@ Ember.Handlebars.helper('format-date', function(temp) {
 });
 
 Ember.Handlebars.helper('setOnMenu1', function() {
+  console.log("Menu 1");
   onMenu2 = false;
 });
 
 Ember.Handlebars.helper('setOnMenu2', function() {
+  console.log("Menu 2");
   onMenu2 = true;
 });
+
+Ember.Handlebars.helper('isOnMenu2', function(block) {
+  console.log("Menu: "+onMenu2);
+  return onMenu2;
+});
+
 
 Ember.Handlebars.helper('get-date', getDate); //This needs to be a function! JK
 
@@ -124,13 +132,11 @@ var parseJSON = function (){
   var data = new Date(JSONString[i].substring(9,19));
 
   if (data.toLocaleDateString() === getDate()){
-    console.log("Found one!");
     index = i;
     break;
   }
  }
- 
- console.log("index: "+index);
+
 
  var JSONValue = $.parseJSON(JSONString[index]);
  var indvDate = typeof JSONValue["date"] === 'undefined';
@@ -150,9 +156,6 @@ var parseJSON = function (){
   temp[slot].body = JSONValue[postKey].body;   
  }
 
- 
- console.log("temp: ");
- console.log(temp);
  return temp;
 }
 
