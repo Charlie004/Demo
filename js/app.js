@@ -85,7 +85,7 @@ Ember.Handlebars.helper('format-date', function(temp) {
   return temp.toLocaleDateString();
 });
 
-Ember.Handlebars.helper('get-date', getDate; //This needs to be a function! JK
+Ember.Handlebars.helper('get-date', getDate); //This needs to be a function! JK
 
 
 var getDate = function getDate(){
