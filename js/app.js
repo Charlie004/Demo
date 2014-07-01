@@ -111,10 +111,9 @@ Ember.Handlebars.helper('setOnMenu2', function() {
 });
 
 
-Ember.Handlebars.helper('setBackButton', function() {
-    console.log("Poke");
-	$('#backButton').html("<p>New</p>"); //<a href="#/menu2/date"><button>Back</buttom></a>
-});
+var goBack = function(){
+window.history.back();
+}
 
 Ember.Handlebars.helper('updateMenu', function(block) {
   updateMenu();
